@@ -15,16 +15,16 @@ const AdminPage = () => {
     const filteredStudents = students.filter((student) => {
         const name = student.name?.toLowerCase() || "";  // Ensure it's a string
         const subject = student.subject?.toLowerCase() || "";  // Handle missing subjects
-    
+
         return name.includes(search) || subject.includes(search);
     });
-    
+
 
     return (
         <Box>
             <Navbar title="Admin Panel" />
 
-            <Box sx={{ padding: 4 }}>
+            <Box sx={{ padding: 12 }}>
 
                 <TextField
                     fullWidth
@@ -35,7 +35,7 @@ const AdminPage = () => {
                     InputLabelProps={{ style: { color: "#fff" } }}  // Makes label white
                     InputProps={{ style: { color: "#fff", borderColor: "#fff" } }}  // Makes input text white
                     sx={{
-                        
+
                         "& .MuiOutlinedInput-root": {
                             "& fieldset": { borderColor: "#fff" }, // White border
                             "&:hover fieldset": { borderColor: "#fff" }, // White border on hover
@@ -44,12 +44,13 @@ const AdminPage = () => {
                     }}
                 />
 
-                {filteredStudents.map((student) => (
-                    <Box key={student.id} sx={{ display: "flex", justifyContent: "space-between", padding: 2, border: "1px solid #ddd", marginBottom: 2 }}>
-                        <Typography>{student.name} - {student.subject}</Typography>
+                {filteredStudents.map((student, index) => (
+                    <Box key={student.id || index} sx={{ display: "flex", justifyContent: "space-between", padding: 2, border: "1px solid #ddd", marginBottom: 2 }}>
+                        <Typography>{student.name} - {student.subjects?.join(", ")}</Typography>
                         <Button variant="contained" onClick={() => setSelectedStudent(student)}>Details</Button>
                     </Box>
                 ))}
+
 
                 {/* Student Details Popup */}
                 {selectedStudent && (
