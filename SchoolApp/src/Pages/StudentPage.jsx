@@ -5,6 +5,7 @@ import Navbar from "../Components/Navbar";
 const StudentPage = () => {
   const userData = sessionStorage.getItem("user");
   const user = userData ? JSON.parse(userData) : null;
+  console.log(user)
 
   if (!user) {
     return (
@@ -23,10 +24,11 @@ const StudentPage = () => {
       <Navbar title="Student Panel" />
 
       <Box sx={{ padding: 4 }}>
-        <Typography variant="h4">Student Dashboard</Typography>
         <Typography>Name: {user.name}</Typography>
         <Typography>Email: {user.email}</Typography>
-        <Typography>Subject: {user.subject || "N/A"}</Typography>
+        <Typography>Standard: {user.standard}</Typography>
+        <Typography>Subject: {user.subjects?.join(", ")}</Typography>
+        <Typography>Address: {user.address}</Typography>
       </Box>
     </Box>
   );

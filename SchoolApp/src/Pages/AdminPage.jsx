@@ -25,7 +25,6 @@ const AdminPage = () => {
             <Navbar title="Admin Panel" />
 
             <Box sx={{ padding: 4 }}>
-                <Typography variant="h4">Admin Dashboard</Typography>
 
                 <TextField
                     fullWidth
@@ -36,6 +35,7 @@ const AdminPage = () => {
                     InputLabelProps={{ style: { color: "#fff" } }}  // Makes label white
                     InputProps={{ style: { color: "#fff", borderColor: "#fff" } }}  // Makes input text white
                     sx={{
+                        
                         "& .MuiOutlinedInput-root": {
                             "& fieldset": { borderColor: "#fff" }, // White border
                             "&:hover fieldset": { borderColor: "#fff" }, // White border on hover
@@ -56,7 +56,12 @@ const AdminPage = () => {
                     <Dialog open={Boolean(selectedStudent)} onClose={() => setSelectedStudent(null)}>
                         <DialogTitle>{selectedStudent.name} - {selectedStudent.subject}</DialogTitle>
                         <DialogContent>
+                            <Typography>Name: {selectedStudent.name}</Typography>
                             <Typography>Email: {selectedStudent.email}</Typography>
+                            <Typography>Language: {selectedStudent.language}</Typography>
+                            <Typography>Standard: {selectedStudent.standard}</Typography>
+                            <Typography>Subjects: {selectedStudent.subjects?.join(", ")}</Typography>
+                            <Typography>Address: {selectedStudent.address}</Typography>
                         </DialogContent>
                     </Dialog>
                 )}

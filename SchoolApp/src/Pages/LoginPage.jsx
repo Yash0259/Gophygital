@@ -74,7 +74,7 @@ const LoginPage = () => {
         }}
       >
         <Typography variant="h5" gutterBottom>
-          Sign In
+          Student Managment
         </Typography>
         <Typography variant="body2" sx={{ opacity: 0.7, marginBottom: 2 }}>
           Keep it all together and you'll be fine

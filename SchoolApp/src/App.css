@@ -8,12 +8,6 @@ html, body {
   font-family: 'Poppins',sans-serif;
 }
 
-#root {
-  min-height: 100vh; /* Ensures it covers the full viewport height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 /* 
 .logo {
@@ -21,7 +15,7 @@ html, body {
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
-}
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
