@@ -1,0 +1,69 @@
+[
+    {
+      "name": "Admin User",
+      "userType": "admin",
+      "email": "admin@example.com",
+      "password": "$2b$10$peNHhuF.c/ihX037Q5zzQeWFkTtuHWbLr0z.Dt8Yuw7eapjo9EUw.",
+      "role":"admin",
+      "language": "English",
+      "address": "123 Admin St, New York, USA",
+      "standard": null,
+      "subjects": []
+    },
+    {
+      "name": "Student 1",
+      "userType": "student",
+      "email": "student1@example.com",
+      "password": "$2b$10$Ev..QlOJ/P.lFtVdClr2Auj.3TnNIreg5PwqW10jg/8/RKIl.bwXC",
+      "role": "student",
+      "language": "English",
+      "address": "456 Elm St, California, USA",
+      "standard": "6th",
+      "subjects": ["Maths", "Science", "History"]
+    },
+    {
+      "name": "Student 2",
+      "userType": "student",
+      "email": "student2@example.com",
+      "password": "$2b$10$MJUO/RjXWQvp6DOdjZm.2OYXkml2UCxCr7KZPjBeiKVZ.AXfFChha",
+      "role": "student",
+      "language": "German",
+      "address": "789 Maple Ave, Berlin, Germany",
+      "standard": "7th",
+      "subjects": ["Physics", "Biology", "Chemistry"]
+    },
+    {
+      "name": "Student 3",
+      "userType": "student",
+      "email": "student3@example.com",
+      "password": "$2b$10$laAo2rNU./uS.F/ZnIuZQealQVMXiich2x866lzTOeqjAtJwB8bWy",
+      "role": "student",
+      "language": "English",
+      "address": "321 Pine Rd, Texas, USA",
+      "standard": "8th",
+      "subjects": ["Geography", "Civics", "Maths"]
+    },
+    {
+      "name": "Student 4",
+      "userType": "student",
+      "email": "student4@example.com",
+      "password": "$2b$10$L6l8/s5R67RxRKKazjzXAOK/hZIL20IBRsXZ/h6ErKv8YCrw8Envy",
+      "role": "student",
+      "language": "German",
+      "address": "876 Oak Ln, Munich, Germany",
+      "standard": "9th",
+      "subjects": ["Science", "Literature", "History"]
+    },
+    {
+      "name": "Student 5",
+      "userType": "student",
+      "email": "student5@example.com",
+      "password": "$2b$10$fYmdwR6mClZ12NaeHA.gluePHzGlKgvxwPVDdGvlSnfdcGPrsISHe",
+      "role": "student",
+      "language": "English",
+      "address": "567 Birch Blvd, London, UK",
+      "standard": "10th",
+      "subjects": ["Economics", "Political Science", "Physics"]
+    }
+  ]
+  

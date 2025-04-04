@@ -1,13 +1,48 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { TextField, Button, IconButton, InputAdornment, Box, Typography, Paper } from "@mui/material";
-import { Visibility, VisibilityOff, Apple } from "@mui/icons-material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import users from "../Data/users.json";
+import bcrypt from "bcryptjs";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleTogglePassword = () => {
     setShowPassword((prev) => !prev);
   };
+  const handleLogin = async () => {
+    setError("");
+  
+    // Find user by email
+    const user = users.find((user) => user.email === email);
+    if (!user) {
+      setError("Invalid Email!");
+      return;
+    }
+  
+    // Compare password using bcrypt
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) {
+      setError("Invalid Password!");
+      return;
+    }
+  
+    // Store user details in sessionStorage before redirecting
+    sessionStorage.setItem("user", JSON.stringify(user));
+  
+    // Redirect based on user type
+    if (user.userType === "admin") {
+      navigate("/adminPage");
+    } else if (user.userType === "student") {
+      navigate("/studentPage");
+    }
+  };
+  
 
   return (
     <Box
@@ -46,10 +81,12 @@ const LoginPage = () => {
         </Typography>
         <TextField
           fullWidth
-          label="Email or Phone"
+          label="Email"
           variant="outlined"
           margin="normal"
           InputProps={{ style: { color: "#fff" } }}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
           fullWidth
@@ -57,6 +94,8 @@ const LoginPage = () => {
           type={showPassword ? "text" : "password"}
           variant="outlined"
           margin="normal"
+          value={password}
+          onChange ={(e) => setPassword(e.target.value)}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -71,7 +110,7 @@ const LoginPage = () => {
         <Typography variant="body2" sx={{ textAlign: "left", cursor: "pointer", opacity: 0.7, marginBottom: 2 }}>
           Forgot Password?
         </Typography>
-        <Button fullWidth variant="contained" sx={{ backgroundColor: "#a855f7", marginBottom: 2 }}>
+        <Button fullWidth variant="contained" sx={{ backgroundColor: "#a855f7", marginBottom: 2 }} onClick={handleLogin}>
           Sign In
         </Button>
       </Paper>
