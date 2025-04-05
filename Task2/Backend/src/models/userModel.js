@@ -20,10 +20,11 @@ const getAllUsers = (callback) =>{
 }
 
 //update user status 
-const updateUserStatus = (id,status, callback) =>{
+const updateUserStatus = (id, status, callback) => {
     const query = "UPDATE users SET status = ? WHERE id = ?";
-
+    db.query(query, [status, id], callback);
 };
+
 
 module.exports ={
     createUser,

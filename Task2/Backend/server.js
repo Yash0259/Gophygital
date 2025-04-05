@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const userRoutes = require("./src/routes/userRoutes")
 
 dotenv.config();
 
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 //Middleware
 app.use(cors());
 app.use(express.json());   //allows parseing json in requests
+app.use("/users", userRoutes);
 
 //Test route
 app.get("/",(req,res)=>{
