@@ -80,7 +80,7 @@ const loginUser = (req, res) => {
         if (user.status.toLowerCase() !== "active") {
             return res.status(403).json({ message: "Your account is not active. Please wait for approval." });
         }
- 
+
         const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: "1h" });
 
         res.status(200).json({
@@ -135,10 +135,29 @@ const updateUserStatus = (req, res) => {
         res.status(200).json({ message: "User status updated" });
     });
 };
+const getMe = (req, res) => {
+    users.findUserById(req.user.id, (err, results) => {
+        if (err) {
+            console.error("getMe error:", err);
+            return res.status(500).json({ message: "Server error" });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        const user = results[0];
+        delete user.password; // remove password before sending
+
+        res.status(200).json(user);
+    });
+};
+
 
 module.exports = {
     registerUser,
     loginUser,
     getUsers,
     updateUserStatus,
+    getMe
 };
