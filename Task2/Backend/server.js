@@ -9,16 +9,20 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 //Middleware
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:5173", // Allow frontend URL
+    credentials: true                // If you're sending cookies or authorization headers
+}));
+
 app.use(express.json());   //allows parseing json in requests
 app.use("/users", userRoutes);
 
 //Test route
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
     res.send("API is Running...");
 });
 
 //start the server 
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 })

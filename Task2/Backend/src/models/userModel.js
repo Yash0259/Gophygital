@@ -13,6 +13,12 @@ const findUserByEmail = (email, callback)=>{
     db.query(query,[email],callback);
 }
 
+// find user by ID
+const findUserById = (id, callback) => {
+    const query = "SELECT * FROM users WHERE id = ?";
+    db.query(query, [id], callback);
+};
+
 //get all users 
 const getAllUsers = (callback) =>{
     const query = "SELECT * FROM users";
@@ -31,4 +37,5 @@ module.exports ={
     findUserByEmail,
     getAllUsers,
     updateUserStatus,
+    findUserById,
 };
