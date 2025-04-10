@@ -10,21 +10,8 @@ import {
     Paper,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-// import bcrypt from "bcryptjs";
 
-// Dummy users data with hashed passwords (hashed version of "123456" for example)
-const users = [
-    {
-        email: "admin@example.com",
-        password: "$2a$10$Z1iwMPRD2cF4cD4az9GGR.AeWzW2rE5eIBo2lIf2mUjScKuI7zNE6", // "123456"
-        userType: "admin",
-    },
-    {
-        email: "student@example.com",
-        password: "$2a$10$Z1iwMPRD2cF4cD4az9GGR.AeWzW2rE5eIBo2lIf2mUjScKuI7zNE6", // "123456"
-        userType: "student",
-    },
-];
+
 
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -48,7 +35,6 @@ const LoginPage = () => {
                 },
                 body: JSON.stringify({ email, password })
             });
-
 
             const data = await response.json();
 
@@ -77,7 +63,6 @@ const LoginPage = () => {
             setError("Something went wrong during login.");
         }
     };
-
 
     return (
         <Box
